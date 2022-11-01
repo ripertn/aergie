@@ -11,6 +11,7 @@
   </head>
   <body>
     <header>
+      <%= render(AergieWeb.PageView, "important_message.html", message: "") %>
       <section class="container">
         <nav>
           <ul>
@@ -22,10 +23,9 @@
             <li><%= link "Wallet", to: Routes.item_index_path(@conn, :index) %></li>
           </ul>
         </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/ouitchka.jpg")} alt="Phoenix Framework Logo"/>
+        <a href={AergieWeb.Router.Helpers.page_url(@conn,:index)} class="phx-logo">
+          <%= AergieWeb.Utils.IconUtils.icon_tag(@conn, "aergie_logo", [class: "other", width: "24", height: "24"]) %>
         </a>
-        <%= render(AergieWeb.PageView, "test.html", message: "testmessage") %>
       </section>
     </header>
     <%= @inner_content %>

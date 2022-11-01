@@ -40,6 +40,11 @@ defmodule AergieWeb.ItemLive.Index do
     {:noreply, assign(socket, :items, list_items())}
   end
 
+  def handle_event("show", %{"id" => id}, socket) do
+    socket = socket |> redirect(external: AergieWeb.Router.Helpers.item_show_url(socket,:show, id))
+    {:noreply, assign(socket, :show, list_items())}
+  end
+
   defp list_items do
     Wallet.list_items()
   end

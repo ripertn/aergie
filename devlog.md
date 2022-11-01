@@ -24,3 +24,13 @@ Phoenix.View.render_to_string(AergieWeb.PageView, "index.html", message: "toto")
 
 __Each of these plugs have a specific responsibility that we will learn later. The last plug is precisely the HelloWeb.Router module. This allows the endpoint to delegate all further request processing to the router. As we now know, its main responsibility is to map verb/path pairs to controllers. The controller then tells a view to render a templateEach of these plugs have a specific responsibility that we will learn later. The last plug is precisely the HelloWeb.Router module. This allows the endpoint to delegate all further request processing to the router. As we now know, its main responsibility is to map verb/path pairs to controllers. The controller then tells a view to render a template__
 
+
+
+## 2022 10 30
+
+- aergie logo created with https://app.svgator.com/#/
+- add logo to project
+- important message display
+- add select in type of item
+- add icon for actions on items
+- add click on line to show detail of action

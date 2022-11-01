@@ -27,7 +27,7 @@
   </thead>
   <tbody id="items">
     <%= for item <- @items do %>
-      <tr id={"item-#{item.id}"}>
+      <tr id={"item-#{item.id}"} phx-click="show" phx-value-id={"#{item.id}"}}>
         <td><%= item.type %></td>
         <td><%= item.name %></td>
         <td><%= item.isin %></td>
@@ -35,9 +35,9 @@
         <td><%= item.pru %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.item_show_path(@socket, :show, item) %></span>
-          <span><%= live_patch "Edit", to: Routes.item_index_path(@socket, :edit, item) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: item.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= live_redirect AergieWeb.Utils.IconUtils.icon_tag(@socket, "eye", []), to: Routes.item_show_path(@socket, :show, item) %></span>
+          <span><%= live_patch AergieWeb.Utils.IconUtils.icon_tag(@socket, "edit", []), to: Routes.item_index_path(@socket, :edit, item) %></span>
+          <span><%= link AergieWeb.Utils.IconUtils.icon_tag(@socket, "trash", []), to: "#", phx_click: "delete", phx_value_id: item.id, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>
     <% end %>

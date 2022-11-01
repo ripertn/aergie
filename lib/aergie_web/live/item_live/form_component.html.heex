@@ -10,7 +10,7 @@
     phx-submit="save">
   
     <%= label f, :type %>
-    <%= text_input f, :type %>
+    <%= select f, :type, ["action","obligation","autre"] %>
     <%= error_tag f, :type %>
   
     <%= label f, :name %>

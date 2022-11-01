@@ -87,6 +87,7 @@ defmodule AergieWeb do
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
+      import AergieWeb.Utils.IconUtils
 
       import AergieWeb.ErrorHelpers
       import AergieWeb.Gettext
