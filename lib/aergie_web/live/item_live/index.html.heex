@@ -19,9 +19,10 @@
       <th>Type</th>
       <th>Name</th>
       <th>Isin</th>
+      <th>Mnemo</th>
       <th>Quantity</th>
       <th>Pru</th>
-
+      <th>Last Price</th>
       <th></th>
     </tr>
   </thead>
@@ -31,9 +32,10 @@
         <td><%= item.type %></td>
         <td><%= item.name %></td>
         <td><%= item.isin %></td>
+        <td><%= item.mnemo %></td>
         <td><%= item.quantity %></td>
         <td><%= item.pru %></td>
-
+        <td><%= item.last_price %></td>
         <td>
           <span><%= live_redirect AergieWeb.Utils.IconUtils.icon_tag(@socket, "eye", []), to: Routes.item_show_path(@socket, :show, item) %></span>
           <span><%= live_patch AergieWeb.Utils.IconUtils.icon_tag(@socket, "edit", []), to: Routes.item_index_path(@socket, :edit, item) %></span>

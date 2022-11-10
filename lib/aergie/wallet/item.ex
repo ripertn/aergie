@@ -8,6 +8,11 @@ defmodule Aergie.Wallet.Item do
     field :pru, :float
     field :quantity, :integer
     field :type, :string
+    field :mnemo, :string
+    field :last_price, :float
+    field :open_price, :float
+    field :highest_price, :float
+    field :lowest_price, :float
 
     timestamps()
   end
@@ -15,7 +20,7 @@ defmodule Aergie.Wallet.Item do
   @doc false
   def changeset(item, attrs) do
     item
-    |> cast(attrs, [:type, :name, :isin, :quantity, :pru])
-    |> validate_required([:type, :name, :isin, :quantity, :pru])
+    |> cast(attrs, [:type, :name, :isin, :quantity, :pru, :mnemo, :last_price, :open_price, :highest_price, :lowest_price])
+    |> validate_required([:type, :name, :isin, :quantity, :pru, :mnemo, :last_price, :open_price, :highest_price, :lowest_price])
   end
 end

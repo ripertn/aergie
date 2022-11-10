@@ -20,7 +20,7 @@ defmodule Aergie.MixProject do
   def application do
     [
       mod: {Aergie.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :inets, :runtime_tools]
     ]
   end
 
@@ -48,6 +48,7 @@ defmodule Aergie.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
+      {:poison, "~> 3.1", override: true},
       {:plug_cowboy, "~> 2.5"}
     ]
   end

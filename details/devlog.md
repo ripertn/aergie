@@ -34,3 +34,17 @@ __Each of these plugs have a specific responsibility that we will learn later. T
 - add select in type of item
 - add icon for actions on items
 - add click on line to show detail of action
+
+## 2022 11 02
+
+- add API handler for AlphaVantage and Quandle
+
+## 2022 11 07
+
+- add new field "mnemo" using "mix ecto.gen.migration add_mnemo_to_item", see https://hexdocs.pm/ecto_sql/Ecto.Migration.html#alter/2
+
+
+## 2022 11 10
+
+- add automatic puller to alphaVantage to get last price of every action, for the day before
+- 

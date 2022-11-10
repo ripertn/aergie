@@ -15,9 +15,10 @@ defmodule Aergie.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Aergie.PubSub},
       # Start the Endpoint (http/https)
-      AergieWeb.Endpoint
+      AergieWeb.Endpoint,
       # Start a worker by calling: Aergie.Worker.start_link(arg)
       # {Aergie.Worker, arg}
+      Puller
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
