@@ -7,6 +7,7 @@ defmodule AlphaVantage do
 
   @timeout [recv_timeout: 30_000, connect_timeout: 30_000]
   @api_key "FY4C9ED2UM6PLD1F"
+  # @api_details AlphaVantage.get_api_details()
 
   
   # def getValueRaw(mnemo \\ "GLE") do
@@ -17,11 +18,15 @@ defmodule AlphaVantage do
   #   end
   # end
 
+  def get_api_details() do
+    File.read!("./details/itwillbeourlittlesecret.json") |> Poison.decode!()
+  end
+
   def getLastValue(mnemo \\ "GLE")
   # def getLastValue(mnemos) when is_list(mnemos), do: Enum.map(mnemos, fn mnemo -> getLastValue(mnemo) end)
   def getLastValue(mnemo) do
-    startDate = "start_date=" <> (Date.utc_today |> Date.add(-5) |> Date.to_string)
-    endDate = "end_date=" <> (Date.utc_today |> Date.to_string)
+    _startDate = "start_date=" <> (Date.utc_today |> Date.add(-5) |> Date.to_string)
+    _endDate = "end_date=" <> (Date.utc_today |> Date.to_string)
     url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=#{mnemo}.PA&apikey=#{@api_key}" |> IO.inspect()
     case :httpc.request(:get, {'#{url}',[]}, @timeout, []) do
       {:ok,{{_,200,_},_head,body}} ->
@@ -42,4 +47,27 @@ defmodule AlphaVantage do
       error -> {:error,error}
     end
   end
+end
+
+
+defmodule Eodhd do
+  @moduledoc """
+    other API with 20 call per day... need to check if we can get real time price, during open hours of stock market
+  """
+
+  @token_eodhd "636fa0a7c58b39.32886955"
+  @timeout [recv_timeout: 30_000, connect_timeout: 30_000]
+
+
+  def getLastValue(mnemo \\ "GLE.PA") do
+    url = "https://eodhistoricaldata.com/api/real-time/#{mnemo}?fmt=json&api_token=#{@token_eodhd}" # |> IO.inspect()
+    case :httpc.request(:get, {'#{url}',[]}, @timeout, []) do
+      {:ok,{{_,200,_},_head,body}} ->
+        IO.inspect(Poison.decode!(body))
+        res = Poison.decode!(body)
+        {:ok, res}
+      :error -> {:error,"error"}
+    end
+  end
+
 end

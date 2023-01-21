@@ -4,6 +4,7 @@ defmodule Aergie.Application do
   @moduledoc false
 
   use Application
+  use Commanded.Application, otp_app: :aergie
 
   @impl true
   def start(_type, _args) do

@@ -47,9 +47,10 @@ defmodule Aergie.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
-      {:jason, "~> 1.2"},
+      {:jason, "~> 1.3"},
       {:poison, "~> 3.1", override: true},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:commanded, "~> 1.4"}
     ]
   end
 
