@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Aergie", suffix: " · Phoenix Framework" %>
+    <%= live_title_tag assigns[:page_title] || "Aergie", suffix: " · monitoring" %>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
@@ -13,21 +13,23 @@
     <header class="aergie-header">
       <%= render(AergieWeb.PageView, "important_message.html", message: "") %>
       <section class="container">
-        <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+        <nav class="row">
+            <li class="column"><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
+            <li class="column"><%= link "Wallet", to: Routes.item_index_path(@conn, :index) %></li>
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+              <li class="column"><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
             <% end %>
-            <li><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
-            <li><%= link "Wallet", to: Routes.item_index_path(@conn, :index) %></li>
-          </ul>
         </nav>
         <a href={AergieWeb.Router.Helpers.page_url(@conn,:index)} class="phx-logo">
-          <%= AergieWeb.Utils.IconUtils.icon_tag(@conn, "aergie_logo", [class: "other", width: "24", height: "24"]) %>
+          <%= AergieWeb.Utils.IconUtils.icon_tag(@conn, "aergie_logo", [class: "other", width: "12", height: "12"]) %>
         </a>
       </section>
     </header>
     <%= @inner_content %>
   </body>
+  <footer>
+    <section class="aergie-footer">
+      <p><%= gettext "version: %{version}", version: "mvp"%></p>
+    </section>
+  </footer>
 </html>

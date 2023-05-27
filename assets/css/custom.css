@@ -21,5 +21,48 @@
 
 .aergie-header:hover {
   opacity: 1.0;
-  font-weight: 250;
+  font-weight: 400;
+}
+
+.aergie-column {
+  text-align: left;
+  border-bottom: 1px solid #e3e3e3;
+  background: #eee;
+  opacity: 0.75;
+  border-radius: 6px;
+  padding: 3em 3em 3em;
+  margin-bottom: 1rem;
+  font-weight: 200;
+  font-size: 120%;
+}
+
+.aergie-column:hover {
+  opacity: 1.0;
+  font-weight: 400;
+}
+
+.aergie-container{
+  margin: 0 auto;
+  padding: 0 2.0rem;
+  max-width: 85%;
+  position: relative;
+  width: 100%
+}
+
+.aergie-footer {
+  text-align: right;
+  border-top: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+  background: #FFFFFF;
+  opacity: 0.8;
+  border-radius: 6px;
+  padding: 1em 1em 1em;
+  margin-top: 3rem;
+  font-weight: 200;
+  font-size: 120%;
+}
+
+.aergie-header:hover {
+  opacity: 1.0;
+  font-weight: 400;
 }

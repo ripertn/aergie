@@ -10,7 +10,7 @@ defmodule Puller do
   def init(_opts) do
     wallet = case Aergie.Repo.all(Aergie.Wallet.Item) do
       res when is_list(res) -> res
-      _other -> Logger.warn("No shares found in wallet ...") && []
+      _other -> Logger.warn("No shares in the wallet ...") && []
     end
 
     # set next automatic pull
@@ -25,7 +25,7 @@ defmodule Puller do
   def handle_info(:pull, _s) do
     wallet = case Aergie.Repo.all(Aergie.Wallet.Item) do
       res when is_list(res) -> res
-      _other -> Logger.warn("No shares found in wallet ...") && []
+      _other -> Logger.warn("No shares in the wallet ...") && []
     end
 
     send(self(), {:pull, wallet})
@@ -33,14 +33,14 @@ defmodule Puller do
   end
 
   def handle_info({:pull, [h|t]}, s) do
-    
+
     Logger.info("start pulling data for #{to_string(h.mnemo)}")
     {:ok, res} = AlphaVantage.getLastValue(h.mnemo)
     Aergie.Wallet.update_item(h, %{last_price: res.last_price, open_price: res.open_price, highest_price: res.highest_price, lowest_price: res.lowest_price })
     Logger.info("data pulled for #{to_string(h.mnemo)}")
 
     Process.send_after(__MODULE__, {:pull, t}, 15_000)  # no more than 5 calls per minute with AlphaVantage free API
-    
+
     {:noreply, s}
   end
 

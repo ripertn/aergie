@@ -7,7 +7,6 @@
 ## 2022 10 06
 
 -> goal: change main picture -> OK
-
 -> goal: add a link to item list, from the root "/" page  
 
 1) d'où le module Aergie.PageController, lie "index.html" au fichier templates/page/index.html.heex ?
@@ -47,4 +46,13 @@ __Each of these plugs have a specific responsibility that we will learn later. T
 ## 2022 11 10
 
 - add automatic puller to alphaVantage to get last price of every action, for the day before
-- 
+
+
+## 2023 01 21
+
+git shortlog --summary --numbered --email
+
+## 2023-05-27
+
+
+

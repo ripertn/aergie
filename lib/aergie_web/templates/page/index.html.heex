@@ -1,41 +1,23 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Aergie" %></h1>
-  <p>Easy monitoring and time saving</p>
-</section>
-
 <section class="row">
   <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.6/CHANGELOG.md">v1.6 Changelog</a>
-      </li>
-    </ul>
+    <img src={"/images/eiffel_midjourney.jpg"}/>
   </article>
-  <article class="column">
-    <h2>Help</h2>
+  <article class="aergie-column">
     <ul>
+      <h2>Features</h2>
       <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+        <%= link "Wallet", to: Routes.item_index_path(@conn, :index) %>
       </li>
-      <li>
-        <a href="https://web.libera.chat/#elixir">#elixir on Libera Chat (IRC)</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-      <li>
-        <a href="https://discord.gg/elixir">Elixir on Discord</a>
-      </li>
+      <h2>Resources</h2>
+      <%= for resource <- [
+        %{url: "http://leprojetlynch.com/author/admin/", label: "Leivrek"},
+        %{url: "https://www.journal-officiel.gouv.fr/pages/balo/", label: "BALO"},
+        %{url: "https://bdif.amf-france.org/fr?typesInformation=DD", label: "AMF"},
+        ] do%>
+        <li>
+          <a href={resource.url}><%=resource.label%></a>
+        </li>
+      <% end %>
     </ul>
   </article>
 </section>
